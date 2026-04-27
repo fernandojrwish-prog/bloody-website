@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", sans-serif;
+
+  --color-blood-red: #990000;
+  --color-neon-red: #FF3131;
+  --color-absolute-black: #000000;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-absolute-black text-white font-sans selection:bg-neon-red selection:text-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tighter;
+  }
+}
+
+@layer components {
+  .neon-text {
+    text-shadow: 0 0 5px var(--color-neon-red), 0 0 10px var(--color-neon-red);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 5px var(--color-neon-red), inset 0 0 5px var(--color-neon-red);
+    border: 1px solid var(--color-neon-red);
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-xl;
+  }
+
+  .cyber-button {
+    @apply relative overflow-hidden px-6 py-3 font-display text-sm font-bold uppercase tracking-widest transition-all duration-300;
+    @apply border border-neon-red text-neon-red hover:bg-neon-red hover:text-white hover:shadow-[0_0_20px_rgba(255,49,49,0.5)];
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-absolute-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-blood-red rounded-full hover:bg-neon-red transition-colors;
+}
